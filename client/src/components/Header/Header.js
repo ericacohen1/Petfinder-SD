@@ -11,9 +11,12 @@ const Header = props => (
               <a className="navbar-brand" href="/Home">PetFinder SD</a>
             </div>
             <ul className="nav navbar-nav">
-              <li className="active"><a href="/Home">Home</a></li>
-              <Link to="LogIntoAccount">Log In</Link>  
-              <li><a href="/CreateAccount">Create Account</a></li>
+              {/* <li className="active"><a href="/Home">Home</a></li> */}
+              <Link to="Home">Home</Link>
+              {/* <li><a href="/LogIntoAccount">Log In</a></li> */}
+              <Link to="LogIntoAccount">Log In</Link> 
+              <Link to="About">About</Link> 
+              {/* <li><a href="/CreateAccount">Create Account</a></li> */}
             </ul>
           </div>
         </nav>
