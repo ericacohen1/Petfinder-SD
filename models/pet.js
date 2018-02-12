@@ -1,10 +1,13 @@
-const mongoose = require('mongoose');
+import { Buffer } from 'buffer';
 
-var PetSchema = new mongoose.Schema({
-    _UserId: {
-        type: Schema.Types.ObjectId,
-        ref: "user"
-    },
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const PetSchema = new Schema({
+    // _UserId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "user"
+    // },
     name: {
         type: String,
         required: true,
@@ -17,12 +20,16 @@ var PetSchema = new mongoose.Schema({
         type: integer,
         required: true,
     },
+    img: {
+        data: Buffer,
+        contentType: String
+    },
     bio: {
         type: String
     }
- 
+
 });
 
 var Pet = mongoose.model('Pet', PetSchema);
 
-module.exports = { Pet };
+module.exports = Pet;
