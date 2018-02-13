@@ -10,6 +10,7 @@ import LogIntoAccount from "./components/LogIntoAccount";
 import CreateAccount from "./components/CreateAccount";
 import About from "./components/About";
 import FindPet from "./components/FindPet";
+import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 
@@ -49,6 +50,7 @@ class App extends Component {
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" component={CreateAccount} />
       <Route exact path="/FindPet" component={FindPet} />
+      <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />
     </div>
   </Router>
