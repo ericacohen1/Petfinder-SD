@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "express": "^4.15.4",
-    "mongoose": "^5.0.4"
+    "mongoose": "^5.0.4",
     "react-router-dom": "^4.2.2"
   }
 }

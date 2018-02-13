@@ -8,13 +8,12 @@ const CreateAccount = props => (
            <h2>Create Your Pet Adoption SD Account</h2>
            <h4>Complete the fields below to sign up!</h4>
            <form onSubmit="submit">
-             <input id="name" placeholder="Name" value='name' /><br />
-             <input id="email" placeholder="Email" value='email' /><br />
-             <input id="password" placeholder="Password" value='password' /><br />
-             <input id="address" placeholder="Address" value='address' /><br />
-             <input id="zipcode" placeholder="Zipcode" value='zipcode' /><br />
-             <input id="city" placeholder="City" value='city' /><br />
-             <input id="state" placeholder="State" value='state' /><br />
+          
+             <input type="text" name="name" placeholder="Name" /><br />
+             <input type="email" name="email" placeholder="Email" /><br />
+             <input type="text" name="password" placeholder="Password" /><br />
+             <input type="text" name="zipcode" placeholder="Zipcode" /><br />
+            
              <Link to="Home"><button>Submit</button></Link>     
              <Link to="LogIntoAccount">Log In</Link>    
            </form>

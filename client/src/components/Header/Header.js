@@ -10,13 +10,16 @@ const Header = props => (
             <div className="navbar-header">
               <a className="navbar-brand" href="/Home">PetFinder SD</a>
             </div>
-            <ul className="nav navbar-nav">
-              {/* <li className="active"><a href="/Home">Home</a></li> */}
-              <Link to="Home">Home</Link>
-              {/* <li><a href="/LogIntoAccount">Log In</a></li> */}
-              <Link to="LogIntoAccount">Log In</Link> 
-              <Link to="About">About</Link> 
-              {/* <li><a href="/CreateAccount">Create Account</a></li> */}
+            <ul className="nav navbar-nav" className="headerButtons">
+              
+              <Link to="Home" class="headerLinks">Home</Link>
+              
+              <Link to="LogIntoAccount" class="headerLinks">Log In</Link> 
+              
+              <Link to="About" class="headerLinks">About</Link> 
+
+              <Link to="Profile" class="headerLinks">Profile</Link> 
+              
             </ul>
           </div>
         </nav>

@@ -10,6 +10,7 @@ import LogIntoAccount from "./components/LogIntoAccount";
 import CreateAccount from "./components/CreateAccount";
 import About from "./components/About";
 import FindPet from "./components/FindPet";
+import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 
@@ -49,6 +50,7 @@ class App extends Component {
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" component={CreateAccount} />
       <Route exact path="/FindPet" component={FindPet} />
+      <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />
     </div>
   </Router>
@@ -68,34 +70,6 @@ class App extends Component {
 
 
 
-       {/* <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-              <div class="col-md-4">
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      Adopt a pet
-                    </div>
-                  </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      Find a new home for my pet
-                    </div>
-                  </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      Success stories
-                    </div>
-                  </div>
-              </div>
-            </div>
-         </div> 
-      </div> 
-     </div> 
-      */}
+       
 
 export default App;
