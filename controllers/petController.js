@@ -13,7 +13,7 @@ module.exports = {
         db.Pet.create(req.body)
         .then(function(dbPet) {
             // If a new pet is successfully added, find the user and add to that user's 'pets' data
-            return db.User.findOneAndUpdate({}, { $push: {pets: dbPet._id} }, {new: true});
+            return db.User.findByIdAndUpdate(req.body.userId, { $push: {pets: dbPet._id} }, {new: true});
         })
         .then(function(dbUser) {
             res.json(dbUser)

@@ -1,4 +1,5 @@
-import { Buffer } from 'buffer';
+
+const {Buffer} = require('buffer')
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -17,7 +18,7 @@ const PetSchema = new Schema({
         require: true,
     },
     age: {
-        type: integer,
+        type: Number,
         required: true,
     },
     img: {

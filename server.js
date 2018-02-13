@@ -2,8 +2,8 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-
-const PORT = process.env.PORT || 3000;
+const routes = require('./routes');
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 
@@ -23,11 +23,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/petFinder",
-  {
-    useMongoClient: true
-  }
-);
+  process.env.MONGODB_URI || "mongodb://localhost/petFinder");
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

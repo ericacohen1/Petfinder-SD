@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const userController = require("../../controllers/petController");
+const userController = require("../../controllers/userController");
 
 // matches with /api/users
+router.route("/")
+    .get(userController.findAll)
+    .post(userController.create)
+
 router.route("/:id")
-    .get(userController.findById)
-    .put(userConroller.update)
+    .get(userController.findOne)
+
+
+
+module.exports = router;

@@ -5,19 +5,21 @@ module.exports = {
     findAll: function (req, res) {
         db.User
             .find(req.query)
+            .populate("pets")
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
-    findById: function(req, res) {
+    findOne: function(req, res) {
         db.User
             .findById(req.params.id)
+            .populate("pets")
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
-        const user = {
-            _id: req.body._id,
-            name: req.body.name
-        }
+        db.User
+            .create(req.body)
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.json(err));
     }
 };

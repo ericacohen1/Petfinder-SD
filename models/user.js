@@ -12,11 +12,11 @@ const UserSchema = new Schema({
     required: true,
     trim: true,
     minlength: 1,
-    unique: true,
-    validate: {
-      validator: validator.isEmail,
-      message: '{VALUE} is not a valid email'
-    }
+    unique: true
+    // validate: {
+    //   validator: validator.isEmail,
+    //   message: '{VALUE} is not a valid email'
+    // }
   },
   password: {
     type: String,
