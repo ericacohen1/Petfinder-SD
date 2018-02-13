@@ -1,32 +1,35 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 3001;
+const bodyParser = require("body-parser");
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 
-const user = require('./controllers/user');
 
-// Serve up static assets (usually on heroku)
+// Configure body parser for handling form submission
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Serve up static assets on app production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// Add routes, both API and view
+app.use(routes);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/petFinderTest",
+  process.env.MONGODB_URI || "mongodb://localhost/petFinder",
   {
     useMongoClient: true
   }
 );
 
-
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
 
-
-module.exports = {
-  app
-};

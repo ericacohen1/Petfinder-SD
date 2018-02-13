@@ -1,8 +1,13 @@
 const router = require("express").Router();
-const articleController = require("../../controllers/petController");
+const petController = require("../../controllers/petController");
 
-router 
-    .route("/")
+// matches with "/api/pets"
+router.route("/test")
     .get(petController.findAll)
+    .post(petController.create);
+
+// matches with "/api/pets"
+router.route("/:id")
+    .get(petController.populatePets)
 
 module.exports = router;
