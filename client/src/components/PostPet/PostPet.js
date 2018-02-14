@@ -9,10 +9,15 @@ const PostPet = props => (
     <h4>Please give us your pet info</h4>
     <form onSubmit="submit">
       
-      <input type="text" name="pet-name" placeholder="Pet Name" /><br />
-      <input type="text" name="breed" placeholder="Breed" /><br />
-      <input type="text" name="age" placeholder="Age" /><br />
-      <input type="text" name="bio" placeholder="Bio" /><br />
+      
+
+      <input type="text" name="petName" placeholder="Pet Name" onChange={props.handlePetNameChange} /><br />
+
+      <input type="text" name="breed" placeholder="Breed" onChange={props.handleBreedChange} /><br />
+
+      <input type="text" name="age" placeholder="Age" onChange={props.handleAgeChange} /><br />
+
+      <input type="text" name="bio" placeholder="Bio" onChange={props.handleBioChange} /><br />
       <h5>Add a picture of your pet</h5>
       <input type="file" name="myFile" /><br />
      

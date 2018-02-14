@@ -13,7 +13,7 @@ import FindPet from "./components/FindPet";
 import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
-
+import utils from './utils/API';
 
 
 class App extends Component {
@@ -24,8 +24,46 @@ class App extends Component {
     password: "",
     pets: [],
 
-
   };
+
+
+  handleNameChange = e => {
+    this.setState({name: e.target.value});
+    console.log(this.state.name);
+ };
+
+  handleEmailChange = e => {
+    this.setState({email: e.target.value});
+    console.log(this.state.email);
+ };
+
+ handlePasswordChange = e => {
+  this.setState({password: e.target.value});
+  console.log(this.state.password);
+};
+
+handlePetNameChange = e => {
+  this.setState({petName: e.target.value});
+  console.log(this.state.petName);
+};
+
+handleBreedChange = e => {
+  this.setState({breed: e.target.value});
+  console.log(this.state.breed);
+};
+
+handleAgeChange = e => {
+  this.setState({age: e.target.value});
+  console.log(this.state.age);
+};
+
+handleBioChange = e => {
+  this.setState({bio: e.target.value});
+  console.log(this.state.bio);
+};
+
+
+
 
   handlePageChange = page => {
     this.setState({ currentPage: page });
@@ -36,11 +74,14 @@ class App extends Component {
     console.log(e);
     console.log(param);
 
+
+
     // with axios
     // make a request to your server 
     // with data
-  };
     
+  };
+  
   
 
   render() {
@@ -61,10 +102,10 @@ class App extends Component {
           handlePageChange={this.handlePageChange}/>
       
       <Route exact path="/Home" component={Home} />
-      <Route exact path="/LogIntoAccount" component={LogIntoAccount} />
-      <Route exact path="/PostPet" component={PostPet} />
+      <Route exact path="/LogIntoAccount" render={() => <LogIntoAccount handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmit={this.handleFormSubmit} />}/>
+      <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/About" component={About} />
-      <Route exact path="/CreateAccount" render={() => <CreateAccount handleFormSubmit={this.handleFormSubmit} />}/>
+      <Route exact path="/CreateAccount" render={() => <CreateAccount handleNameChange={this.handleNameChange} handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/FindPet" component={FindPet} />
       <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />
