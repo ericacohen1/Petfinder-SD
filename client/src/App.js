@@ -18,11 +18,27 @@ import SuccessStories from './components/SuccessStories/SuccessStories';
 
 class App extends Component {
   state = {
-    currentPage: "Home"
+    currentPage: "Home",
+    name: "",
+    email: "",
+    password: "",
+    pets: [],
+
+
   };
 
   handlePageChange = page => {
     this.setState({ currentPage: page });
+  };
+
+  handleFormSubmit = param => e =>  {
+    e.preventDefault();
+    console.log(e);
+    console.log(param);
+
+    // with axios
+    // make a request to your server 
+    // with data
   };
     
   
@@ -48,7 +64,7 @@ class App extends Component {
       <Route exact path="/LogIntoAccount" component={LogIntoAccount} />
       <Route exact path="/PostPet" component={PostPet} />
       <Route exact path="/About" component={About} />
-      <Route exact path="/CreateAccount" component={CreateAccount} />
+      <Route exact path="/CreateAccount" render={() => <CreateAccount handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/FindPet" component={FindPet} />
       <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />

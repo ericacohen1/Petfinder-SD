@@ -10,9 +10,11 @@ const PostPet = props => (
     <form onSubmit="submit">
       
       <input type="text" name="pet-name" placeholder="Pet Name" /><br />
-      <input type="email" name="email" placeholder="Email" /><br />
-      <input type="text" name="password" placeholder="Password" /><br />
-      <input type="text" name="zipcode" placeholder="Zipcode" /><br />
+      <input type="text" name="breed" placeholder="Breed" /><br />
+      <input type="text" name="age" placeholder="Age" /><br />
+      <input type="text" name="bio" placeholder="Bio" /><br />
+      <h5>Add a picture of your pet</h5>
+      <input type="file" name="myFile" /><br />
      
       <Link to="Home"><button>Submit</button></Link>     
      
