@@ -16,7 +16,7 @@ const CreateAccount = props => (
              <input type="text" name="password" placeholder="Password" onChange={props.handlePasswordChange} /><br />
              {/* <input type="text" name="zipcode" placeholder="Zipcode" /><br /> */}
             
-             <Link to="Home"><button onClick={props.handleFormSubmit("accountData")}>Submit</button></Link>     
+             <Link to="Home"><button onClick={props.handleFormSubmit(props)}>Submit</button></Link>     
              <Link to="LogIntoAccount">Log In</Link>    
            </form>
          </div>

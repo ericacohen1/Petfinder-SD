@@ -14,7 +14,8 @@ const LogIntoAccount = props => (
       <label htmlFor="password">Password</label><br />
       <input type="text" name="password" placeholder="Password" onChange={props.handlePasswordChange} /><br />
 
-      <Link to="Home"><button>Submit</button></Link>     
+      <Link to="Home"><button onClick={props.handleFormSubmitExistingUser("accountData")}>Submit</button></Link>  
+      
       <Link to="CreateAccount">Create Account</Link>     
       
 

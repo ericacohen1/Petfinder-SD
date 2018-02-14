@@ -14,7 +14,7 @@ import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 import utils from './utils/API';
-
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -79,9 +79,22 @@ handleBioChange = e => {
     // with axios
     // make a request to your server 
     // with data
-    
+    axios.post("/api/users", this.state);
   };
   
+  handleFormSubmitExistingUser = param => e =>  {
+    e.preventDefault();
+    console.log(e);
+    console.log(param);
+
+
+    // with axios
+    // make a request to your server 
+    // with data
+    axios.post("/api/users/login", this.state).then(res => console.log(res.data)).catch(err => alert(err));
+
+
+  };
   
 
   render() {
@@ -102,7 +115,7 @@ handleBioChange = e => {
           handlePageChange={this.handlePageChange}/>
       
       <Route exact path="/Home" component={Home} />
-      <Route exact path="/LogIntoAccount" render={() => <LogIntoAccount handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmit={this.handleFormSubmit} />}/>
+      <Route exact path="/LogIntoAccount" render={() => <LogIntoAccount handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmitExistingUser={this.handleFormSubmitExistingUser} />}/>
       <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" render={() => <CreateAccount handleNameChange={this.handleNameChange} handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmit={this.handleFormSubmit} />}/>

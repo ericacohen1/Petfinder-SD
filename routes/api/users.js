@@ -9,6 +9,9 @@ router.route("/")
 router.route("/:id")
     .get(userController.findOne)
 
+router.route("/login")
+    .post(userController.login);
+
 
 
 module.exports = router;
