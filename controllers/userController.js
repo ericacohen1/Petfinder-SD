@@ -21,5 +21,20 @@ module.exports = {
             .create(req.body)
             .then(dbUser => res.json(dbUser))
             .catch(err => res.json(err));
+    },
+    login: function(req, res) {
+        db.User
+            .findOne({email: req.body.email})
+            .then(dbUser => { 
+                console.log(req.body.password);
+                console.log(dbUser);
+                if(dbUser.password === req.body.password) {
+                    res.json(dbUser);
+                } else {
+                    res.status(400).json("Incorrect Password!");
+                }
+                
+            })
+            .catch(err => res.json(err));
     }
 };

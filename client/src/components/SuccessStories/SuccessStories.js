@@ -7,7 +7,7 @@ const SuccessStories = props => (
     <div className="col-md-12">
     <div className="panel panel-default">
     <div className="panel-body">
-        <div class="row">
+        <div className="row">
         <div className="col-md-3">
         <div className="panel panel-default">
             <div className="panel-body">
@@ -24,7 +24,7 @@ const SuccessStories = props => (
         </div>
         </div>
 
-        <div class="row">
+        <div className="row">
         <div className="col-md-3">
         <div className="panel panel-default">
             <div className="panel-body">
@@ -41,7 +41,7 @@ const SuccessStories = props => (
         </div>
         </div>
 
-        <div class="row">
+        <div className="row">
         <div className="col-md-3">
         <div className="panel panel-default">
             <div className="panel-body">
@@ -58,7 +58,7 @@ const SuccessStories = props => (
         </div>
         </div>
 
-        <div class="row">
+        <div className="row">
         <div className="col-md-3">
         <div className="panel panel-default">
             <div className="panel-body">
