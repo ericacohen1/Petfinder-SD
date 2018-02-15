@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -13,7 +13,7 @@ import FindPet from "./components/FindPet";
 import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
-import utils from './utils/API';
+// import utils from './utils/API';
 import axios from 'axios';
 
 class App extends Component {
@@ -80,6 +80,8 @@ handleBioChange = e => {
     // make a request to your server 
     // with data
     axios.post("/api/users", this.state);
+    // res.redirect("/Home");
+
   };
   
   handleFormSubmitExistingUser = param => e =>  {
