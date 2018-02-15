@@ -69,6 +69,7 @@ handleBioChange = e => {
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
+
   //new user
   handleFormSubmit = param => e =>  {
     e.preventDefault();
@@ -139,7 +140,18 @@ handleBioChange = e => {
       />
       <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/About" component={About} />
-      <Route exact path="/CreateAccount" render={() => <CreateAccount handleNameChange={this.handleNameChange} handleEmailChange={this.handleEmailChange} handlePasswordChange={this.handlePasswordChange} handleFormSubmit={this.handleFormSubmit} />}/>
+      <Route exact path="/CreateAccount" render={() => {
+        const isAuthenticated = this.state.isAuthenticated;
+        if (isAuthenticated) {
+          return <Redirect to="/Home"/>;
+        }
+        return (<CreateAccount 
+          handleNameChange={this.handleNameChange} 
+          handleEmailChange={this.handleEmailChange} 
+          handlePasswordChange={this.handlePasswordChange} 
+          handleFormSubmit={this.handleFormSubmit} 
+        />)}}
+      />
       <Route exact path="/FindPet" component={FindPet} />
       <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />
