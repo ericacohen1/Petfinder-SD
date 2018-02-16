@@ -134,7 +134,19 @@ handleBioChange = e => {
           handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
         />)}}
       />
-      <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmitNewPet={this.handleFormSubmitNewPet} />}/>
+      <Route exact path="/PostPet" render={() => {
+         const isAuthenticated = this.state.isAuthenticated;
+         if (!isAuthenticated) {
+           return <Redirect to="/LogIntoAccount"/>;
+         }
+        return (<PostPet
+          handlePetNameChange={this.handlePetNameChange}
+          handleAgeChange={this.handleAgeChange}
+          handleBreedChange={this.handleBreedChange}
+          handleBioChange={this.handleBioChange}
+          handleFormSubmitNewPet={this.handleFormSubmitNewPet}
+        />)}}
+      />
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" render={() => {
         const isLoggedIn = this.state.isAuthenticated;
