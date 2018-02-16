@@ -24,7 +24,8 @@ class App extends Component {
     email: "",
     password: "",
     pets: [],
-    isAuthenticated: false
+    isAuthenticated: false,
+    userId: ""
   };
 
 
@@ -44,8 +45,8 @@ class App extends Component {
 };
 
 handlePetNameChange = e => {
-  this.setState({petName: e.target.value});
-  console.log(this.state.petName);
+  this.setState({name: e.target.value});
+  console.log(this.state.name);
 };
 
 handleBreedChange = e => {
@@ -77,7 +78,7 @@ handleBioChange = e => {
     
     axios.post("/api/users", this.state).then(res => {
       
-      this.setState({isAuthenticated: true});
+      this.setState({isAuthenticated: true, userId: res.data._id});
     }) ;
     
   };
@@ -86,11 +87,22 @@ handleBioChange = e => {
     e.preventDefault();
     
     axios.post("/api/users/login", this.state).then(res => {
-     
-      this.setState({isAuthenticated: true});
+      this.setState({isAuthenticated: true, userId: res.data._id});
     }).catch(err => alert(err));
     
   };
+
+  handleFormSubmitNewPet = param => e =>  {
+    e.preventDefault();
+    console.log(true);
+    axios.post("/api/pets", this.state).then(res => {
+      
+      this.setState({isAuthenticated: true});
+      // go to the homepage
+    }).catch(err => alert(err));
+    
+  };
+  
   
 
   render() {
@@ -122,7 +134,7 @@ handleBioChange = e => {
           handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
         />)}}
       />
-      <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmit={this.handleFormSubmit} />}/>
+      <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmitNewPet={this.handleFormSubmitNewPet} />}/>
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" render={() => {
         const isLoggedIn = this.state.isAuthenticated;
