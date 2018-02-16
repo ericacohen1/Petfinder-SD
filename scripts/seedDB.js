@@ -60,9 +60,10 @@ const getAnimal = (animal, zip, amount, cb) => {
                     "email": res.data.petfinder.pet.contact.email.$t
                 };
                 animals.push(animal);
+                counter++;
             }
 
-            counter++;
+            // counter++;
 
             if(counter === amount) {
                 console.log(animals);
