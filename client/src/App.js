@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -85,11 +84,9 @@ handleBioChange = e => {
   
   handleFormSubmitExistingUser = param => e =>  {
     e.preventDefault();
-    
     axios.post("/api/users/login", this.state).then(res => {
       this.setState({isAuthenticated: true, userId: res.data._id});
     }).catch(err => alert(err));
-    
   };
 
   handleFormSubmitNewPet = param => e =>  {
