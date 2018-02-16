@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -13,7 +13,7 @@ import FindPet from "./components/FindPet";
 import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
-import utils from './utils/API';
+// import utils from './utils/API';
 import axios from 'axios';
 // import { Link } from "react-router-dom";
 
@@ -134,7 +134,19 @@ handleBioChange = e => {
           handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
         />)}}
       />
-      <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmitNewPet={this.handleFormSubmitNewPet} />}/>
+      <Route exact path="/PostPet" render={() => {
+         const isAuthenticated = this.state.isAuthenticated;
+         if (!isAuthenticated) {
+           return <Redirect to="/LogIntoAccount"/>;
+         }
+        return (<PostPet
+          handlePetNameChange={this.handlePetNameChange}
+          handleAgeChange={this.handleAgeChange}
+          handleBreedChange={this.handleBreedChange}
+          handleBioChange={this.handleBioChange}
+          handleFormSubmitNewPet={this.handleFormSubmitNewPet}
+        />)}}
+      />
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" render={() => {
         const isLoggedIn = this.state.isAuthenticated;

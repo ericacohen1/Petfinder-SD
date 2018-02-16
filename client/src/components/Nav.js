@@ -14,7 +14,7 @@ const Nav = props =>
     <h3 className="panel-title"> <Link to="FindPet">Find A Pet</Link></h3>
   </div>
   <div className="panel-body">
-    <img src={findPetLogo}/>
+    <img src={findPetLogo} alt="dog logo"/>
   </div>
 </div>
 </div>
@@ -26,7 +26,7 @@ const Nav = props =>
     <h3 className="panel-title"> <Link to="PostPet">Post A Pet</Link></h3>
   </div>
   <div className="panel-body">
-  <img src={postPetLogo}/>
+  <img src={postPetLogo} alt="post dog logo"/>
   </div>
 </div>
     </div>
@@ -37,7 +37,7 @@ const Nav = props =>
     <h3 className="panel-title"> <Link to="SuccessStories">Success Stories</Link></h3>
   </div>
   <div className="panel-body">
-  <img src={success}/>
+  <img src={success} alt="success"/>
   </div>
 </div>
     </div>
