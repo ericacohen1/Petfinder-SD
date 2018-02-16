@@ -90,8 +90,6 @@ handleBioChange = e => {
       this.setState({isAuthenticated: true});
     }).catch(err => alert(err));
     
-
-
   };
   
 
