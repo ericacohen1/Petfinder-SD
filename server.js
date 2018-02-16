@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const axios = require("axios");
+// const axios = require("axios");
 
 // Configure body parser for handling form submission
 app.use(bodyParser.urlencoded({ extended: false }));

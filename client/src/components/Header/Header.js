@@ -10,7 +10,7 @@ const Header = props => (
             <div className="navbar-header">
               <a className="navbar-brand" href="/Home">PetFinder SD</a>
             </div>
-            <ul className="nav navbar-nav" className="headerButtons">
+            <ul className="nav navbar-nav" id="headerButtons" alt="navbar">
               
               <Link to="Home" class="headerLinks">Home</Link>
               
