@@ -60,10 +60,10 @@ const getAnimal = (animal, zip, amount, cb) => {
                     "email": res.data.petfinder.pet.contact.email.$t
                 };
                 animals.push(animal);
-                counter++;
+                // counter++;
             }
 
-            // counter++;
+            counter++;
 
             if(counter === amount) {
                 console.log(animals);
@@ -75,14 +75,14 @@ const getAnimal = (animal, zip, amount, cb) => {
 
 // TEST
 // Creating an initial array of cats, then linking thier id's to a single user, who gets pushed into the users collection
-getAnimal("cat", "CA", 10, function(animalData){
+getAnimal("cat", "CA", 30, function(animalData){
     db.Pet.collection.insertMany(animalData).then(res => {
         let petIds = res.ops.map(animal => animal._id);
 
         const userInsert = {
-            "name": "petFinderAPI30",
-            "email": "petFinderAPI11200@petFinder.com",
-            "password": "petFinder123453535",
+            "name": "petFinderAPIcats",
+            "email": "petFinderAPIcats@petFinder.com",
+            "password": "petFinder1",
             "pets": petIds
         }
 
@@ -92,3 +92,45 @@ getAnimal("cat", "CA", 10, function(animalData){
         });
     })
 });
+
+// console.log("done");
+
+// getAnimal("dog", "CA", 30, function(animalData){
+//     db.Pet.collection.insertMany(animalData).then(res => {
+//         let petIds = res.ops.map(animal => animal._id);
+
+//         const userInsert = {
+//             "name": "petFinderAPIdogs",
+//             "email": "petFinderAPIdogs@petFinder.com",
+//             "password": "petFinder2",
+//             "pets": petIds
+//         }
+
+//         db.User.create(userInsert).then(data => {
+//             console.log(data);
+//             process.exit(0);
+//         });
+//     })
+// });
+
+// console.log("done");
+
+// getAnimal("rabbit", "CA", 30, function(animalData){
+//     db.Pet.collection.insertMany(animalData).then(res => {
+//         let petIds = res.ops.map(animal => animal._id);
+
+//         const userInsert = {
+//             "name": "petFinderAPIrabbits",
+//             "email": "petFinderAPIrabbits@petFinder.com",
+//             "password": "petFinder3",
+//             "pets": petIds
+//         }
+
+//         db.User.create(userInsert).then(data => {
+//             console.log(data);
+//             process.exit(0);
+//         });
+//     })
+// });
+
+// console.log("done");
