@@ -73,34 +73,20 @@ handleBioChange = e => {
   //new user
   handleFormSubmit = param => e =>  {
     e.preventDefault();
-    console.log(e);
-    console.log(param);
     
-
-    // with axios
-    // make a request to your server 
-    // with data
+    
     axios.post("/api/users", this.state).then(res => {
-      console.log(this.state);
+      
       this.setState({isAuthenticated: true});
-      //if user is authenticated
-      //then set state is authenticated to true
     }) ;
     
   };
   
   handleFormSubmitExistingUser = param => e =>  {
     e.preventDefault();
-    console.log(e);
-    console.log(param);
-
-
-    // with axios
-    // make a request to your server 
-    // with data
+    
     axios.post("/api/users/login", this.state).then(res => {
-      console.log(res.data);
-      console.log(this.state);
+     
       this.setState({isAuthenticated: true});
     }).catch(err => alert(err));
     
@@ -141,10 +127,14 @@ handleBioChange = e => {
       <Route exact path="/PostPet" render={() => <PostPet handlePetNameChange={this.handlePetNameChange} handleAgeChange={this.handleAgeChange} handleBreedChange={this.handleBreedChange} handleBioChange={this.handleBioChange} handleFormSubmit={this.handleFormSubmit} />}/>
       <Route exact path="/About" component={About} />
       <Route exact path="/CreateAccount" render={() => {
-        const isAuthenticated = this.state.isAuthenticated;
-        if (isAuthenticated) {
+        const isLoggedIn = this.state.isAuthenticated;
+        // const newUser=this.state.newUser;
+        if (isLoggedIn) {
           return <Redirect to="/Home"/>;
         }
+        // if (newUser) {
+        //   return <Redirect to="/Home"/>;
+        // }
         return (<CreateAccount 
           handleNameChange={this.handleNameChange} 
           handleEmailChange={this.handleEmailChange} 
