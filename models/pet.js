@@ -18,14 +18,14 @@ const PetSchema = new Schema({
         require: true,
     },
     age: {
-        type: Number,
+        type: String,
         required: true,
     },
     img: {
         data: Buffer,
         contentType: String
     },
-    bio: {
+    description: {
         type: String
     }
 
