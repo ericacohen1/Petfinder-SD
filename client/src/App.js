@@ -14,8 +14,8 @@ import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 import API from './utils/API';
 import axios from 'axios';
-// import { Link } from "react-router-dom";
-import pets from "./pets.json";
+
+
 
 class App extends Component {
   state = {
