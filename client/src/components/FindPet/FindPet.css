@@ -9,6 +9,8 @@
     border-style: solid;
     border-color: #00d9ff;
     display: inline-block;
+    overflow: scroll;
+
 }
 
 /* .card:nth-child(3n + 3) {
@@ -19,5 +21,10 @@
 
 .card:hover {
     cursor: pointer;
-    border-color: #ff4800;
+    border-color: #030303;
+}
+
+.img-container {
+    width: 100%;
+    height: 30%;
 }
