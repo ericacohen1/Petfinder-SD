@@ -27,7 +27,11 @@ const PetSchema = new Schema({
     },
     description: {
         type: String
+    },
+    contactInfo: {
+        type: String
     }
+
 
 });
 

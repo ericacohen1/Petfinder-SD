@@ -21,6 +21,9 @@ const FindPet = props => (
             <strong>Name:</strong> {props.name}
           </li>
           <li>
+            <strong>Contact Info:</strong> {props.contactInfo}
+          </li>
+          <li>
             <strong>Breed:</strong> {props.breed}
           </li>
           <li>
