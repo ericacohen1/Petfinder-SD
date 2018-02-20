@@ -17,6 +17,8 @@ const PostPet = props => (
 
       <input type="text" name="age" placeholder="Age" onChange={props.handleAgeChange} /><br />
 
+      <input type="text" name="contactInfo" placeholder="Enter Contact Info" onChange={props.handleContactInfoChange} /><br />
+
       <input type="text" name="description" placeholder="Bio" onChange={props.handleBioChange} /><br />
       <h5>Add a picture of your pet</h5>
       <input type="text" className="form-control" name="image"  onChange={props.handleImageChange} /><br />

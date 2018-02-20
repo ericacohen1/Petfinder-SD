@@ -26,7 +26,8 @@ class App extends Component {
     pets: [],
     isAuthenticated: false,
     userId: "",
-    image: ""
+    image: "",
+    contactInfo: ""
     
   };
 
@@ -75,6 +76,11 @@ class App extends Component {
 handlePetNameChange = e => {
   this.setState({name: e.target.value});
   console.log(this.state.name);
+};
+
+handleContactInfoChange = e => {
+  this.setState({contactInfo: e.target.value});
+  console.log(this.state.contactInfo);
 };
 
 handleBreedChange = e => {
@@ -170,6 +176,7 @@ handleBioChange = e => {
                 handleBreedChange={this.handleBreedChange}
                 handleBioChange={this.handleBioChange}
                 handleImageChange={this.handleImageChange}
+                handleContactInfoChange={this.handleContactInfoChange}
                 handleFormSubmitNewPet={this.handleFormSubmitNewPet}
               />)}}
             />
@@ -200,6 +207,7 @@ handleBioChange = e => {
                   age={pet.age}
                   
                   image={pet.image}
+                  contactInfo={pet.contactInfo}
                   description={pet.description}
                 />
               ))}  />
