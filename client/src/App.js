@@ -14,7 +14,8 @@ import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 import API from './utils/API';
 import axios from 'axios';
-// import { Link } from "react-router-dom";
+
+
 
 class App extends Component {
   state = {
@@ -25,6 +26,14 @@ class App extends Component {
     pets: [],
     isAuthenticated: false,
     userId: ""
+    
+  };
+
+  findPet = id => {
+    // Filter this.state.pets for pets with an id not equal to the id being removed
+    const pets = this.state.pets.filter(pet => pet.id !== id);
+    // Set this.state.pets equal to the new pets array
+    this.setState({ pets });
   };
 
   // When the component mounts, load all books and save them to this.state.books
@@ -73,8 +82,8 @@ handleAgeChange = e => {
 };
 
 handleBioChange = e => {
-  this.setState({bio: e.target.value});
-  console.log(this.state.bio);
+  this.setState({description: e.target.value});
+  console.log(this.state.description);
 };
 
 
@@ -119,6 +128,7 @@ handleBioChange = e => {
   render() {
     console.log(this.state.pets);
     return (
+
     
       <div>
         

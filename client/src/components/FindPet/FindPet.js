@@ -8,6 +8,9 @@ import "./FindPet.css";
 
 const FindPet = props => (
     // <p>Find A Pet</p>
+
+ 
+
     <div className="card">
       {/* <div className="img-container">
         <img alt={props.name} src={props.image} />
@@ -31,8 +34,8 @@ const FindPet = props => (
           </li>
         </ul>
       </div>
-     
-    </div>
+     </div>
+    
   );
 
 export default FindPet;
