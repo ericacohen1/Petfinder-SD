@@ -1,0 +1,23 @@
+
+
+  .card {
+    height: 250px;
+    width: 250px;
+    margin: 20px 50px 20px 50px;
+    background-size: cover;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #00d9ff;
+    display: inline-block;
+}
+
+/* .card:nth-child(3n + 3) {
+    margin-right: 0;
+} */
+
+
+
+.card:hover {
+    cursor: pointer;
+    border-color: #ff4800;
+}

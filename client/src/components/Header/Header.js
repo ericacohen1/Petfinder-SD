@@ -18,7 +18,7 @@ const Header = props => (
               
               <Link to="About" class="headerLinks">About</Link> 
 
-              <Link to="Profile" class="headerLinks">Profile</Link> 
+              {/* <Link to="Profile" class="headerLinks">Profile</Link>  */}
               
             </ul>
           </div>
