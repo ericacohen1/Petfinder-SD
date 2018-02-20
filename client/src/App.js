@@ -28,7 +28,7 @@ class App extends Component {
     userId: "",
     image: "",
     contactInfo: ""
-    
+
   };
 
   findPet = id => {
@@ -58,10 +58,10 @@ class App extends Component {
     console.log(this.state.name);
   };
 
- handleImageChange = e => {
-  this.setState({image: e.target.value});
-  console.log(this.state.image);
-};
+  handleImageChange = e => {
+    this.setState({ image: e.target.value });
+    console.log(this.state.image);
+  };
 
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
@@ -78,15 +78,15 @@ class App extends Component {
     console.log(this.state.name);
   };
 
-handleContactInfoChange = e => {
-  this.setState({contactInfo: e.target.value});
-  console.log(this.state.contactInfo);
-};
+  handleContactInfoChange = e => {
+    this.setState({ contactInfo: e.target.value });
+    console.log(this.state.contactInfo);
+  };
 
-handleBreedChange = e => {
-  this.setState({breed: e.target.value});
-  console.log(this.state.breed);
-};
+  handleBreedChange = e => {
+    this.setState({ breed: e.target.value });
+    console.log(this.state.breed);
+  };
 
   handleAgeChange = e => {
     this.setState({ age: e.target.value });
@@ -136,7 +136,7 @@ handleBreedChange = e => {
   };
 
   handleLogout = () => {
-    this.setState({isAuthenticated: false})
+    this.setState({ isAuthenticated: false })
   }
 
 
@@ -147,19 +147,19 @@ handleBreedChange = e => {
 
 
       <div>
-        
-        
+
+
 
         <Router>
 
           <div>
-            <Header 
+            <Header
               handleLogout={this.handleLogout}
               isAuthenticated={this.state.isAuthenticated}
             />
             <Nav
               currentPage={this.state.currentPage}
-              handlePageChange={this.handlePageChange} 
+              handlePageChange={this.handlePageChange}
             />
             <Route exact path="/Home" component={Home} />
             <Route exact path="/LogIntoAccount" render={() => {
@@ -209,18 +209,18 @@ handleBreedChange = e => {
             }}
             />
             {/* <Route exact path="/FindPet" component={FindPet} /> */}
-              <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
-                <FindPet
-                  id={pet.id}
-                  key={pet.id}
-                  name={pet.name}
-                  breed={pet.breed}
-                  age={pet.age}
-                  image={pet.image}
-                  contactInfo={pet.contactInfo}
-                  description={pet.description}
-                />
-              ))}  />
+            <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
+              <FindPet
+                id={pet.id}
+                key={pet.id}
+                name={pet.name}
+                breed={pet.breed}
+                age={pet.age}
+                image={pet.image}
+                contactInfo={pet.contactInfo}
+                description={pet.description}
+              />
+            ))} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/SuccessStories" component={SuccessStories} />
           </div>
