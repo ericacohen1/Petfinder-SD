@@ -1,0 +1,12 @@
+[
+    {
+      "id": 1,
+      "name": "fluffy",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/666px-Spongebob-squarepants.svg.png",
+
+      "breed": "dog", 
+      "age": 3
+     
+    }
+
+]

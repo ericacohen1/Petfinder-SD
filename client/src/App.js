@@ -15,6 +15,7 @@ import SuccessStories from './components/SuccessStories/SuccessStories';
 // import utils from './utils/API';
 import axios from 'axios';
 // import { Link } from "react-router-dom";
+import pets from "./pets.json";
 
 class App extends Component {
   state = {
@@ -25,6 +26,14 @@ class App extends Component {
     pets: [],
     isAuthenticated: false,
     userId: ""
+    
+  };
+
+  findPet = id => {
+    // Filter this.state.pets for pets with an id not equal to the id being removed
+    const pets = this.state.pets.filter(pet => pet.id !== id);
+    // Set this.state.pets equal to the new pets array
+    this.setState({ pets });
   };
 
 
@@ -105,11 +114,19 @@ handleBioChange = e => {
   render() {
 
     return (
+
     
     <div>
       
+       
+      
 
       <Router>
+
+        
+      
+     
+ 
     
     <div>
     <Header />
@@ -154,6 +171,10 @@ handleBioChange = e => {
         // if (newUser) {
         //   return <Redirect to="/Home"/>;
         // }
+
+    
+
+
         return (<CreateAccount 
           handleNameChange={this.handleNameChange} 
           handleEmailChange={this.handleEmailChange} 
@@ -161,7 +182,20 @@ handleBioChange = e => {
           handleFormSubmit={this.handleFormSubmit} 
         />)}}
       />
-      <Route exact path="/FindPet" component={FindPet} />
+     
+      
+        
+        
+     {/* <Route exact path="/FindPet" component={FindPet}  /> */}
+          
+          {this.state.pets.map(pet=> (
+            <FindPet
+            findPet={this.findPet}
+            id={pet.id}
+            name={pet.name}
+            />
+          ))}
+
       <Route exact path="/Profile" component={Profile} />
       <Route exact path="/SuccessStories" component={SuccessStories} />
     </div>
