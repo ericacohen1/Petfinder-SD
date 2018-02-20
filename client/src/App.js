@@ -25,7 +25,8 @@ class App extends Component {
     password: "",
     pets: [],
     isAuthenticated: false,
-    userId: ""
+    userId: "",
+    image: ""
     
   };
 
@@ -55,6 +56,11 @@ class App extends Component {
     this.setState({name: e.target.value});
     console.log(this.state.name);
  };
+
+ handleImageChange = e => {
+  this.setState({image: e.target.value});
+  console.log(this.state.image);
+};
 
   handleEmailChange = e => {
     this.setState({email: e.target.value});
@@ -132,17 +138,7 @@ handleBioChange = e => {
     
       <div>
         
-        {/* {this.state.pets.map(pet => (
-            <FindPet
-              id={pet.id}
-              key={pet.id}
-              name={pet.name}
-              breed={pet.breed}
-              age={pet.age}
-              // image={pet.image}
-              description={pet.description}
-            />
-          ))} */}
+        
 
         <Router>
       
@@ -173,6 +169,7 @@ handleBioChange = e => {
                 handleAgeChange={this.handleAgeChange}
                 handleBreedChange={this.handleBreedChange}
                 handleBioChange={this.handleBioChange}
+                handleImageChange={this.handleImageChange}
                 handleFormSubmitNewPet={this.handleFormSubmitNewPet}
               />)}}
             />
@@ -201,7 +198,8 @@ handleBioChange = e => {
                   name={pet.name}
                   breed={pet.breed}
                   age={pet.age}
-                  // image={pet.image}
+                  
+                  image={pet.image}
                   description={pet.description}
                 />
               ))}  />
