@@ -12,7 +12,7 @@ import FindPet from "./components/FindPet";
 import Profile from "./components/Profile";
 import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
-// import utils from './utils/API';
+import API from './utils/API';
 import axios from 'axios';
 // import { Link } from "react-router-dom";
 import pets from "./pets.json";
@@ -34,6 +34,20 @@ class App extends Component {
     const pets = this.state.pets.filter(pet => pet.id !== id);
     // Set this.state.pets equal to the new pets array
     this.setState({ pets });
+  };
+
+  // When the component mounts, load all books and save them to this.state.books
+  componentDidMount() {
+    this.getPets();
+  }
+
+  // Loads all books  and sets them to this.state.books
+  getPets = () => {
+    API.getPets()
+      .then(res =>
+        this.setState({ pets: res.data, name: "", breed: "", age: "", description: "" })
+      )
+      .catch(err => console.log(err));
   };
 
 
@@ -68,8 +82,8 @@ handleAgeChange = e => {
 };
 
 handleBioChange = e => {
-  this.setState({bio: e.target.value});
-  console.log(this.state.bio);
+  this.setState({description: e.target.value});
+  console.log(this.state.description);
 };
 
 
@@ -112,96 +126,91 @@ handleBioChange = e => {
   
 
   render() {
-
+    console.log(this.state.pets);
     return (
 
     
-    <div>
-      
-       
-      
-
-      <Router>
-
+      <div>
         
-      
-     
- 
-    
-    <div>
-    <Header />
-    
-      <Nav 
-      
-      currentPage={this.state.currentPage}
-          handlePageChange={this.handlePageChange}/>
-      
-      <Route exact path="/Home" component={Home} />
-      <Route exact path="/LogIntoAccount" render={() => {
-        const isAuthenticated = this.state.isAuthenticated;
-        if (isAuthenticated) {
-          return <Redirect to="/Home"/>;
-        }
-        return (<LogIntoAccount 
-          handleEmailChange={this.handleEmailChange}
-          handlePasswordChange={this.handlePasswordChange}
-          handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
-        />)}}
-      />
-      <Route exact path="/PostPet" render={() => {
-         const isAuthenticated = this.state.isAuthenticated;
-         if (!isAuthenticated) {
-           return <Redirect to="/LogIntoAccount"/>;
-         }
-        return (<PostPet
-          handlePetNameChange={this.handlePetNameChange}
-          handleAgeChange={this.handleAgeChange}
-          handleBreedChange={this.handleBreedChange}
-          handleBioChange={this.handleBioChange}
-          handleFormSubmitNewPet={this.handleFormSubmitNewPet}
-        />)}}
-      />
-      <Route exact path="/About" component={About} />
-      <Route exact path="/CreateAccount" render={() => {
-        const isLoggedIn = this.state.isAuthenticated;
-        // const newUser=this.state.newUser;
-        if (isLoggedIn) {
-          return <Redirect to="/Home"/>;
-        }
-        // if (newUser) {
-        //   return <Redirect to="/Home"/>;
-        // }
-
-    
-
-
-        return (<CreateAccount 
-          handleNameChange={this.handleNameChange} 
-          handleEmailChange={this.handleEmailChange} 
-          handlePasswordChange={this.handlePasswordChange} 
-          handleFormSubmit={this.handleFormSubmit} 
-        />)}}
-      />
-     
-      
-        
-        
-     {/* <Route exact path="/FindPet" component={FindPet}  /> */}
-          
-          {this.state.pets.map(pet=> (
+        {/* {this.state.pets.map(pet => (
             <FindPet
-            findPet={this.findPet}
-            id={pet.id}
-            name={pet.name}
+              id={pet.id}
+              key={pet.id}
+              name={pet.name}
+              breed={pet.breed}
+              age={pet.age}
+              // image={pet.image}
+              description={pet.description}
             />
-          ))}
+          ))} */}
 
-      <Route exact path="/Profile" component={Profile} />
-      <Route exact path="/SuccessStories" component={SuccessStories} />
-    </div>
-  </Router>
-  <Footer />
-</div>
+        <Router>
+      
+          <div>
+            <Header />
+            <Nav 
+              currentPage={this.state.currentPage}
+              handlePageChange={this.handlePageChange}/>
+            <Route exact path="/Home" component={Home} />
+            <Route exact path="/LogIntoAccount" render={() => {
+              const isAuthenticated = this.state.isAuthenticated;
+              if (isAuthenticated) {
+                return <Redirect to="/Home"/>;
+              }
+              return (<LogIntoAccount 
+                handleEmailChange={this.handleEmailChange}
+                handlePasswordChange={this.handlePasswordChange}
+                handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
+              />)}}
+            />
+            <Route exact path="/PostPet" render={() => {
+              const isAuthenticated = this.state.isAuthenticated;
+              if (!isAuthenticated) {
+                return <Redirect to="/LogIntoAccount"/>;
+              }
+              return (<PostPet
+                handlePetNameChange={this.handlePetNameChange}
+                handleAgeChange={this.handleAgeChange}
+                handleBreedChange={this.handleBreedChange}
+                handleBioChange={this.handleBioChange}
+                handleFormSubmitNewPet={this.handleFormSubmitNewPet}
+              />)}}
+            />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/CreateAccount" render={() => {
+              const isLoggedIn = this.state.isAuthenticated;
+              // const newUser=this.state.newUser;
+              if (isLoggedIn) {
+                return <Redirect to="/Home"/>;
+              }
+              // if (newUser) {
+              //   return <Redirect to="/Home"/>;
+              // }
+              return (<CreateAccount 
+                handleNameChange={this.handleNameChange} 
+                handleEmailChange={this.handleEmailChange} 
+                handlePasswordChange={this.handlePasswordChange} 
+                handleFormSubmit={this.handleFormSubmit} 
+              />)}}
+            />
+            {/* <Route exact path="/FindPet" component={FindPet} /> */}
+              <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
+                <FindPet
+                  id={pet.id}
+                  key={pet.id}
+                  name={pet.name}
+                  breed={pet.breed}
+                  age={pet.age}
+                  // image={pet.image}
+                  description={pet.description}
+                />
+              ))}  />
+            <Route exact path="/Profile" component={Profile} />
+            <Route exact path="/SuccessStories" component={SuccessStories} />
+          </div>
+        </Router>
+        <Footer />
+      </div>
 
 
 );
