@@ -25,8 +25,10 @@ class App extends Component {
     password: "",
     pets: [],
     isAuthenticated: false,
-    userId: ""
-
+    userId: "",
+    image: "",
+    contactInfo: ""
+    
   };
 
   findPet = id => {
@@ -56,6 +58,11 @@ class App extends Component {
     console.log(this.state.name);
   };
 
+ handleImageChange = e => {
+  this.setState({image: e.target.value});
+  console.log(this.state.image);
+};
+
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
     console.log(this.state.email);
@@ -71,10 +78,15 @@ class App extends Component {
     console.log(this.state.name);
   };
 
-  handleBreedChange = e => {
-    this.setState({ breed: e.target.value });
-    console.log(this.state.breed);
-  };
+handleContactInfoChange = e => {
+  this.setState({contactInfo: e.target.value});
+  console.log(this.state.contactInfo);
+};
+
+handleBreedChange = e => {
+  this.setState({breed: e.target.value});
+  console.log(this.state.breed);
+};
 
   handleAgeChange = e => {
     this.setState({ age: e.target.value });
@@ -135,18 +147,8 @@ class App extends Component {
 
 
       <div>
-
-        {/* {this.state.pets.map(pet => (
-            <FindPet
-              id={pet.id}
-              key={pet.id}
-              name={pet.name}
-              breed={pet.breed}
-              age={pet.age}
-              // image={pet.image}
-              description={pet.description}
-            />
-          ))} */}
+        
+        
 
         <Router>
 
@@ -182,6 +184,8 @@ class App extends Component {
                 handleAgeChange={this.handleAgeChange}
                 handleBreedChange={this.handleBreedChange}
                 handleBioChange={this.handleBioChange}
+                handleImageChange={this.handleImageChange}
+                handleContactInfoChange={this.handleContactInfoChange}
                 handleFormSubmitNewPet={this.handleFormSubmitNewPet}
               />)
             }}
@@ -205,17 +209,18 @@ class App extends Component {
             }}
             />
             {/* <Route exact path="/FindPet" component={FindPet} /> */}
-            <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
-              <FindPet
-                id={pet.id}
-                key={pet.id}
-                name={pet.name}
-                breed={pet.breed}
-                age={pet.age}
-                // image={pet.image}
-                description={pet.description}
-              />
-            ))} />
+              <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
+                <FindPet
+                  id={pet.id}
+                  key={pet.id}
+                  name={pet.name}
+                  breed={pet.breed}
+                  age={pet.age}
+                  image={pet.image}
+                  contactInfo={pet.contactInfo}
+                  description={pet.description}
+                />
+              ))}  />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/SuccessStories" component={SuccessStories} />
           </div>

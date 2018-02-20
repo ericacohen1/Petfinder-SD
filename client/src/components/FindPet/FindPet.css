@@ -1,15 +1,17 @@
 
 
   .card {
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     margin: 20px 50px 20px 50px;
     background-size: cover;
     border-width: 5px;
     border-style: solid;
-    border-color: #00d9ff;
+    border-color: #8d8d8d;
     display: inline-block;
-    overflow:scroll;
+    overflow: scroll;
+
+   
 }
 
 /* .card:nth-child(3n + 3) {
@@ -20,5 +22,24 @@
 
 .card:hover {
     cursor: pointer;
-    border-color: black;
+    border-color: #030303;
 }
+
+.img-container {
+    width: 100%;
+    height: 30%;
+}
+
+.card > .img-container {
+    height: 60%;
+    overflow: hidden;
+    text-align: center;
+    background:#6CADDC;
+   
+  }
+
+  img {
+    vertical-align: middle;
+    width: 100%;
+
+  }

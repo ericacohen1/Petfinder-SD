@@ -12,13 +12,16 @@ const FindPet = props => (
  
 
     <div className="card">
-      {/* <div className="img-container">
+      <div className="img-container">
         <img alt={props.name} src={props.image} />
-      </div> */}
+      </div>
       <div className="content">
         <ul>
           <li>
             <strong>Name:</strong> {props.name}
+          </li>
+          <li>
+            <strong>Contact Info:</strong> {props.contactInfo}
           </li>
           <li>
             <strong>Breed:</strong> {props.breed}

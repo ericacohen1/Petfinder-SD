@@ -21,13 +21,17 @@ const PetSchema = new Schema({
         type: String,
         required: true,
     },
-    img: {
-        data: Buffer,
+    image: {
+        type: String,
         contentType: String
     },
     description: {
         type: String
+    },
+    contactInfo: {
+        type: String
     }
+
 
 });
 
