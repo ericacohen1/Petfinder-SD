@@ -8,7 +8,7 @@ const Header = props => (
   <nav className="navbar navbar-inverse">
     <div className="container-fluid">
       <div className="navbar-header">
-        <a className="navbar-brand" >PetFinder SD</a>
+        <a className="navbar-brand">PetFinder SD</a>
       </div>
       <ul className="nav navbar-nav" id="headerButtons" alt="navbar">
 
