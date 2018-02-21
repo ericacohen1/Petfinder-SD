@@ -1,5 +1,7 @@
 import React from "react";
+
 import "./PostPet.css"; 
+
 
 const PostPet = props => (
     <div>
@@ -23,9 +25,11 @@ const PostPet = props => (
       <input type="text" className="form-control" name="image"  onChange={props.handleImageChange} /><br />
                       
                            
+
       <button type="submit">Submit</button>   
                 
       
+
    
      
     </form>
