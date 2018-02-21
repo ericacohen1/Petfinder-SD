@@ -14,8 +14,12 @@ import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 import API from './utils/API';
 import axios from 'axios';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
-
+reactLocalStorage.set('var', true);
+reactLocalStorage.get('var', true);
+reactLocalStorage.setObject('var', {'test': 'test'});
+reactLocalStorage.getObject('var');
 
 class App extends Component {
   state = {
@@ -27,7 +31,8 @@ class App extends Component {
     isAuthenticated: false,
     userId: "",
     image: "",
-    contactInfo: ""
+    contactInfo: "",
+    user: ""
 
   };
 
@@ -137,7 +142,11 @@ class App extends Component {
 
   handleLogout = () => {
     this.setState({ isAuthenticated: false })
-  }
+
+};
+
+
+
 
 
 

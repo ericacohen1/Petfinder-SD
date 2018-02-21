@@ -24,6 +24,7 @@
     "axios": "^0.17.1",
     "express": "^4.15.4",
     "mongoose": "^5.0.4",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "reactjs-localstorage": "0.0.6"
   }
 }
