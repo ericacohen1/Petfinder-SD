@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Router, Route, Redirect } from "react-router-dom";
 import './App.css';
 import Home from "./components/Home";
 import LogIntoAccount from "./components/LogIntoAccount";
@@ -15,7 +15,7 @@ import SuccessStories from './components/SuccessStories/SuccessStories';
 import API from './utils/API';
 import axios from 'axios';
 
-
+import history from './history.js';
 
 class App extends Component {
   state = {
@@ -51,7 +51,6 @@ class App extends Component {
       )
       .catch(err => console.log(err));
   };
-
 
   handleNameChange = e => {
     this.setState({ name: e.target.value });
@@ -98,9 +97,6 @@ class App extends Component {
     console.log(this.state.description);
   };
 
-
-
-
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
@@ -126,11 +122,10 @@ class App extends Component {
 
   handleFormSubmitNewPet = param => e => {
     e.preventDefault();
-    console.log(true);
     axios.post("/api/pets", this.state).then(res => {
-
-      this.setState({ isAuthenticated: true });
       // go to the homepage
+      // this.props.history.push("Home");
+      history.push('/Home');
     }).catch(err => alert(err));
 
   };
@@ -150,7 +145,7 @@ class App extends Component {
 
 
 
-        <Router>
+        <Router history={history}>
 
           <div>
             <Header
