@@ -1,5 +1,7 @@
 import React from "react";
 import "./PostPet.css";
+//added
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const PostPet = props => (
@@ -27,8 +29,8 @@ const PostPet = props => (
                            
                            
                            
-     
-      <button onClick={props.handleFormSubmitNewPet("accountData")}>Submit</button>
+      <Link to="FindPet"><button onClick={props.handleFormSubmitNewPet("accountData")}>Submit</button></Link>
+
    
      
     </form>

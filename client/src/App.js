@@ -17,6 +17,7 @@ import axios from 'axios';
 
 
 
+
 class App extends Component {
   state = {
     currentPage: "Home",
@@ -28,7 +29,7 @@ class App extends Component {
     userId: "",
     image: "",
     contactInfo: ""
-    
+
   };
 
   findPet = id => {
@@ -54,49 +55,49 @@ class App extends Component {
 
 
   handleNameChange = e => {
-    this.setState({name: e.target.value});
+    this.setState({ name: e.target.value });
     console.log(this.state.name);
- };
+  };
 
- handleImageChange = e => {
-  this.setState({image: e.target.value});
-  console.log(this.state.image);
-};
+  handleImageChange = e => {
+    this.setState({ image: e.target.value });
+    console.log(this.state.image);
+  };
 
   handleEmailChange = e => {
-    this.setState({email: e.target.value});
+    this.setState({ email: e.target.value });
     console.log(this.state.email);
- };
+  };
 
- handlePasswordChange = e => {
-  this.setState({password: e.target.value});
-  console.log(this.state.password);
-};
+  handlePasswordChange = e => {
+    this.setState({ password: e.target.value });
+    console.log(this.state.password);
+  };
 
-handlePetNameChange = e => {
-  this.setState({name: e.target.value});
-  console.log(this.state.name);
-};
+  handlePetNameChange = e => {
+    this.setState({ name: e.target.value });
+    console.log(this.state.name);
+  };
 
-handleContactInfoChange = e => {
-  this.setState({contactInfo: e.target.value});
-  console.log(this.state.contactInfo);
-};
+  handleContactInfoChange = e => {
+    this.setState({ contactInfo: e.target.value });
+    console.log(this.state.contactInfo);
+  };
 
-handleBreedChange = e => {
-  this.setState({breed: e.target.value});
-  console.log(this.state.breed);
-};
+  handleBreedChange = e => {
+    this.setState({ breed: e.target.value });
+    console.log(this.state.breed);
+  };
 
-handleAgeChange = e => {
-  this.setState({age: e.target.value});
-  console.log(this.state.age);
-};
+  handleAgeChange = e => {
+    this.setState({ age: e.target.value });
+    console.log(this.state.age);
+  };
 
-handleBioChange = e => {
-  this.setState({description: e.target.value});
-  console.log(this.state.description);
-};
+  handleBioChange = e => {
+    this.setState({ description: e.target.value });
+    console.log(this.state.description);
+  };
 
 
 
@@ -106,69 +107,78 @@ handleBioChange = e => {
   };
 
   //new user
-  handleFormSubmit = param => e =>  {
+  handleFormSubmit = param => e => {
     e.preventDefault();
-    
-    
+
+
     axios.post("/api/users", this.state).then(res => {
-      
-      this.setState({isAuthenticated: true, userId: res.data._id});
-    }) ;
-    
+
+      this.setState({ isAuthenticated: true, userId: res.data._id });
+    });
+
   };
-  
-  handleFormSubmitExistingUser = param => e =>  {
+
+  handleFormSubmitExistingUser = param => e => {
     e.preventDefault();
     axios.post("/api/users/login", this.state).then(res => {
-      this.setState({isAuthenticated: true, userId: res.data._id});
+      this.setState({ isAuthenticated: true, userId: res.data._id });
     }).catch(err => alert(err));
   };
 
-  handleFormSubmitNewPet = param => e =>  {
+  handleFormSubmitNewPet = param => e => {
     e.preventDefault();
     console.log(true);
     axios.post("/api/pets", this.state).then(res => {
-      
-      this.setState({isAuthenticated: true});
+
+      this.setState({ isAuthenticated: true });
       // go to the homepage
     }).catch(err => alert(err));
-    
+
   };
-  
-  
+
+  handleLogout = () => {
+    this.setState({ isAuthenticated: false })
+  }
+
+
 
   render() {
     console.log(this.state.pets);
     return (
 
-    
+
       <div>
-        
-        
+
+
 
         <Router>
-      
+
           <div>
-            <Header />
-            <Nav 
+            <Header
+              handleLogout={this.handleLogout}
+              isAuthenticated={this.state.isAuthenticated}
+            />
+            <Nav
               currentPage={this.state.currentPage}
-              handlePageChange={this.handlePageChange}/>
+              handlePageChange={this.handlePageChange}
+            />
             <Route exact path="/Home" component={Home} />
             <Route exact path="/LogIntoAccount" render={() => {
-              const isAuthenticated = this.state.isAuthenticated;
-              if (isAuthenticated) {
-                return <Redirect to="/Home"/>;
+              const isLoggedIn = this.state.isAuthenticated;
+              if (isLoggedIn) {
+                return <Redirect to="/Home" />;
               }
-              return (<LogIntoAccount 
+              return (<LogIntoAccount
                 handleEmailChange={this.handleEmailChange}
                 handlePasswordChange={this.handlePasswordChange}
                 handleFormSubmitExistingUser={this.handleFormSubmitExistingUser}
-              />)}}
+              />)
+            }}
             />
             <Route exact path="/PostPet" render={() => {
-              const isAuthenticated = this.state.isAuthenticated;
-              if (!isAuthenticated) {
-                return <Redirect to="/LogIntoAccount"/>;
+              const isLoggedIn = this.state.isAuthenticated;
+              if (!isLoggedIn) {
+                return <Redirect to="/LogIntoAccount" />;
               }
               return (<PostPet
                 handlePetNameChange={this.handlePetNameChange}
@@ -178,39 +188,40 @@ handleBioChange = e => {
                 handleImageChange={this.handleImageChange}
                 handleContactInfoChange={this.handleContactInfoChange}
                 handleFormSubmitNewPet={this.handleFormSubmitNewPet}
-              />)}}
+              />)
+            }}
             />
             <Route exact path="/About" component={About} />
             <Route exact path="/CreateAccount" render={() => {
               const isLoggedIn = this.state.isAuthenticated;
               // const newUser=this.state.newUser;
               if (isLoggedIn) {
-                return <Redirect to="/Home"/>;
+                return <Redirect to="/Home" />;
               }
               // if (newUser) {
               //   return <Redirect to="/Home"/>;
               // }
-              return (<CreateAccount 
-                handleNameChange={this.handleNameChange} 
-                handleEmailChange={this.handleEmailChange} 
-                handlePasswordChange={this.handlePasswordChange} 
-                handleFormSubmit={this.handleFormSubmit} 
-              />)}}
+              return (<CreateAccount
+                handleNameChange={this.handleNameChange}
+                handleEmailChange={this.handleEmailChange}
+                handlePasswordChange={this.handlePasswordChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />)
+            }}
             />
             {/* <Route exact path="/FindPet" component={FindPet} /> */}
-              <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
-                <FindPet
-                  id={pet.id}
-                  key={pet.id}
-                  name={pet.name}
-                  breed={pet.breed}
-                  age={pet.age}
-                  
-                  image={pet.image}
-                  contactInfo={pet.contactInfo}
-                  description={pet.description}
-                />
-              ))}  />
+            <Route exact path="/FindPet" render={() => this.state.pets.map(pet => (
+              <FindPet
+                id={pet.id}
+                key={pet.id}
+                name={pet.name}
+                breed={pet.breed}
+                age={pet.age}
+                image={pet.image}
+                contactInfo={pet.contactInfo}
+                description={pet.description}
+              />
+            ))} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/SuccessStories" component={SuccessStories} />
           </div>
@@ -219,18 +230,11 @@ handleBioChange = e => {
       </div>
 
 
-);
+    );
+  }
 }
-}
 
 
 
-
- 
-
-
-
-
-       
 
 export default App;
