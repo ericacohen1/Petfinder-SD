@@ -156,12 +156,15 @@ class App extends Component {
             <Header
               handleLogout={this.handleLogout}
               isAuthenticated={this.state.isAuthenticated}
+              // need to update to take in user name...
+              name={this.state.name}
             />
-            <Nav
+            {/* <Nav
               currentPage={this.state.currentPage}
               handlePageChange={this.handlePageChange}
-            />
-            <Route exact path="/Home" component={Home} />
+            /> */}
+            
+            <Route exact path="/Home" component={Nav} />
             <Route exact path="/LogIntoAccount" render={() => {
               const isLoggedIn = this.state.isAuthenticated;
               if (isLoggedIn) {
