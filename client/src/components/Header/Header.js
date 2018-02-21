@@ -19,7 +19,10 @@ const Header = props => (
         {/* <Link to="Profile" class="headerLinks">Profile</Link>  */}
 
       </ul>
+
       <ul className="nav navbar-nav navbar-right" id="headerButtons" alt="navbar">
+
+        {/* {(props.isAuthenticated) ? <Link to="Profile" className="headerLinks" >Hello, {props.name}</Link> : <h3>Welcome!</h3>} */}
 
         {(props.isAuthenticated) ? <Link to="Home" className="headerLinks" onClick={() => props.handleLogout()}>Log Out</Link> : <Link to="LogIntoAccount" className="headerLinks">Log In</Link>}
 
