@@ -12,10 +12,10 @@ const LogIntoAccount = props => (
       <input type="email" name="email" placeholder="Email" onChange={props.handleEmailChange} /><br />
 
       <label htmlFor="password">Password</label><br />
-      <input type="text" name="password" placeholder="Password" onChange={props.handlePasswordChange} /><br />
+      <input type="password" name="password" placeholder="Password" onChange={props.handlePasswordChange} /><br />
 
       <Link to="Home"><button onClick={props.handleFormSubmitExistingUser("accountData")}>Submit</button></Link>  
-      
+
       <Link to="CreateAccount">Create Account</Link>     
       
 

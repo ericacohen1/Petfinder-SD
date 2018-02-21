@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// var bcrypt = require("bcrypt-nodejs");
 
 const UserSchema = new Schema({
   name: {
@@ -30,6 +31,18 @@ const UserSchema = new Schema({
     }
   ]
 });
+
+  // // Before we create a new user we will hash 
+  // // their password on the way into the database
+  // User.beforeCreate(function (model, options) {
+  //   return new Promise(function (resolve, reject) {
+  //     bcrypt.hash(model.password, null, null, function (err, hash) {
+  //       if (err) return reject(err);
+  //       model.password = hash;
+  //       return resolve(model, options);
+  //     });
+  //   });
+  // });
 
 var User = mongoose.model('User', UserSchema);
 
