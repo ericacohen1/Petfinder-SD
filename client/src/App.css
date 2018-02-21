@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: url("/components/img/petfinderbackground.jpg");
+  background-image: url("./img/petfinderbackground.jpg");
 }
 
 
@@ -31,3 +31,14 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.panel-body {
+  padding: 0px;
+  height: 75px;
+}
+
+h3 {
+  font-size: 30px !important;
+}
+ img {
+   height: 250px;
+ }

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import findPetLogo from "../img/find-pet.png";
-import success from "../img/success.png";
-import postPetLogo from "../img/post-pet.png";
+import success from "../img/story.png";
+import postPetLogo from "../img/post.png";
 
 const Nav = props =>
 
