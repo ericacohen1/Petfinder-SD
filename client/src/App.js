@@ -163,7 +163,7 @@ class App extends Component {
               currentPage={this.state.currentPage}
               handlePageChange={this.handlePageChange}
             /> */}
-            
+
             <Route exact path="/Home" component={Nav} />
             <Route exact path="/LogIntoAccount" render={() => {
               const isLoggedIn = this.state.isAuthenticated;
