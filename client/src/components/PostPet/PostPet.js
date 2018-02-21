@@ -1,13 +1,12 @@
 import React from "react";
-import "./PostPet.css";
-// import { Link } from "react-router-dom";
+import "./PostPet.css"; 
 
 const PostPet = props => (
     <div>
     <div className="account-container">
     <h2>Post Your Pet</h2>
     <h4>Please give us your pet info</h4>
-    <form>
+    <form name="petForm" onSubmit={props.handleFormSubmitNewPet()}>
       
       
 
@@ -24,11 +23,9 @@ const PostPet = props => (
       <input type="text" className="form-control" name="image"  onChange={props.handleImageChange} /><br />
                       
                            
-                           
-                           
-                           
-     
-      <button onClick={props.handleFormSubmitNewPet("accountData")}>Submit</button>
+      <button type="submit">Submit</button>   
+                
+      
    
      
     </form>
