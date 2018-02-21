@@ -14,12 +14,8 @@ import PostPet from "./components/PostPet";
 import SuccessStories from './components/SuccessStories/SuccessStories';
 import API from './utils/API';
 import axios from 'axios';
-import {reactLocalStorage} from 'reactjs-localstorage';
 
-reactLocalStorage.set('var', true);
-reactLocalStorage.get('var', true);
-reactLocalStorage.setObject('var', {'test': 'test'});
-reactLocalStorage.getObject('var');
+
 
 class App extends Component {
   state = {
@@ -31,8 +27,7 @@ class App extends Component {
     isAuthenticated: false,
     userId: "",
     image: "",
-    contactInfo: "",
-    user: ""
+    contactInfo: ""
 
   };
 
@@ -142,11 +137,7 @@ class App extends Component {
 
   handleLogout = () => {
     this.setState({ isAuthenticated: false })
-
-};
-
-
-
+  }
 
 
 
@@ -165,12 +156,15 @@ class App extends Component {
             <Header
               handleLogout={this.handleLogout}
               isAuthenticated={this.state.isAuthenticated}
+              // need to update to take in user name...
+              name={this.state.name}
             />
-            <Nav
+            {/* <Nav
               currentPage={this.state.currentPage}
               handlePageChange={this.handlePageChange}
-            />
-            <Route exact path="/Home" component={Home} />
+            /> */}
+            <Redirect from="/" to="LogIntoAccount" />
+            <Route exact path="/Home" component={Nav} />
             <Route exact path="/LogIntoAccount" render={() => {
               const isLoggedIn = this.state.isAuthenticated;
               if (isLoggedIn) {
