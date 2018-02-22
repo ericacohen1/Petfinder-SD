@@ -1,4 +1,5 @@
 import axios from "axios";
+import filterParams from "./filterParams";
 
 export default {
     getUsers: function() {
@@ -9,16 +10,12 @@ export default {
     },
     getPets: function() {
         return axios.get("/api/pets");
-
-
     },
     
     savePets: function(petData) {
         return axios.post("/api/pets", petData);
-
-
-
-}
-
-
+    },
+    getArticles: function(params) {
+        return axios.get("/api/nyt", { params: filterParams(params) });
+    }
 };
