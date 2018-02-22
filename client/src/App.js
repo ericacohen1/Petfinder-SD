@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import Home from "./components/Home";
+//import Home from "./components/Home";
 import LogIntoAccount from "./components/LogIntoAccount";
 import CreateAccount from "./components/CreateAccount";
 import About from "./components/About";
