@@ -1,87 +1,66 @@
-import React from "react";
+import React, {Component} from "react";
+import Panel from "../../components/Panel";
+import API from "../../utils/API";
+import { Col, Row, Container } from "../../components/Grid";
 import "./SuccessStories.css";
+import { List } from "../../components/List";
+import Article from "../Article";
 
-const SuccessStories = props => (
-    <div className="container">
-    <div className="row">
-    <div className="col-md-12">
-    <div className="panel panel-default">
-    <div className="panel-body">
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        <div className="col-md-9">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        </div>
+class SuccessStories extends Component {
+    state = {
+        articles: []
+    };
 
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        <div className="col-md-9">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        </div>
+    getArticles = () => {
+        API.getArticles({
+          q: "pet adoption",
+          start_year: "2017",
+          end_year: "2018"
+        })
+          .then(res =>
+            this.setState({
+              articles: res.data,
+              message: !res.data.length
+                ? "No New Articles Found, Try a Different Query"
+                : ""
+            })
+          )
+          .catch(err => console.log(err));
+      };
 
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        <div className="col-md-9">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        </div>
+    componentDidMount() {
+        this.getArticles();
+    }
+    // getArticles(); // or would the render do a findall
 
-        <div className="row">
-        <div className="col-md-3">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        <div className="col-md-9">
-        <div className="panel panel-default">
-            <div className="panel-body">
-            Basic panel example
-            </div>
-        </div>
-        </div>
-        </div>
+    render() {
+        console.log(API);
+        return (
+            <Container>
+                <Row>
+                    <Col size="md-12">
+                        <Panel title="Results">
+                            {this.state.articles.length ? (
+                                <List>
+                                    {this.state.articles.map(article => (
+                                        <Article
+                                            key={article._id}
+                                            _id={article._id}
+                                            title={article.headline.main}
+                                            url={article.web_url}
+                                        />
+                                    ))}
+                                </List>
+                            ) : (
+                                <h2 className="text-center">Loading...</h2>
+                            )}
+                        </Panel>
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
 
-
-        
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
-)
+}
 
 export default SuccessStories;

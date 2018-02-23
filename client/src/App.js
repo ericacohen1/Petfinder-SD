@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import { Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import Home from "./components/Home";
+//import Home from "./components/Home";
 import LogIntoAccount from "./components/LogIntoAccount";
 import CreateAccount from "./components/CreateAccount";
 import About from "./components/About";
@@ -154,11 +154,13 @@ class App extends Component {
               // need to update to take in user name...
               name={this.state.name}
             />
-            {/* <Nav
-              currentPage={this.state.currentPage}
-              handlePageChange={this.handlePageChange}
-            /> */}
-            <Redirect from="/" to="LogIntoAccount"/>
+            
+            <Route exact path="/" render = {() => {
+              if(this.state.isAuthenticated) {
+                return <Redirect to="/Home" />;
+              }
+              return <Redirect to="/LogIntoAccount" />;
+            }} />
             <Route exact path="/Home" component={Nav} />
             <Route exact path="/LogIntoAccount" render={() => {
               const isLoggedIn = this.state.isAuthenticated;
