@@ -1,0 +1,16 @@
+.panel-body {
+    margin-bottom: 125px;
+    margin-top: 5px;
+}
+
+/* @media (max-width: 990px) { 
+    .panel-body {
+        margin-bottom: 175px;
+        margin-top: 50px;
+    }
+}  */
+
+.panel-resizable {
+    resize: vertical;
+  
+}
