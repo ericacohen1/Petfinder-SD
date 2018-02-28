@@ -27,8 +27,7 @@ class App extends Component {
     isAuthenticated: false,
     userId: "",
     image: "",
-    contactInfo: ""
-
+    contactInfo: "" // change
   };
 
   findPet = id => {
@@ -78,8 +77,8 @@ class App extends Component {
   };
 
   handleContactInfoChange = e => {
-    this.setState({ contactInfo: e.target.value });
-    console.log(this.state.contactInfo);
+    this.setState({ email: e.target.value }); // maybe needs to be contact info
+    console.log(this.state.email);
   };
 
   handleBreedChange = e => {
@@ -217,7 +216,7 @@ class App extends Component {
                 breed={pet.breed}
                 age={pet.age}
                 image={pet.image}
-                contactInfo={pet.contactInfo}
+                contactInfo={pet.email}
                 description={pet.description}
               />
             ))} />
