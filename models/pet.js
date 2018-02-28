@@ -28,7 +28,7 @@ const PetSchema = new Schema({
     description: {
         type: String
     },
-    contactInfo: {
+    email: {
         type: String
     }
 
