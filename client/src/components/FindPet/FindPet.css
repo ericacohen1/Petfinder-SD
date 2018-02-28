@@ -2,6 +2,7 @@
     height: 300px;
     width: 300px;
     margin: 20px 50px 20px 50px;
+    margin-right: 0%;
     background-size: cover;
     border-width: 5px;
     border-style: solid;
@@ -26,7 +27,6 @@
  .img-container {
     width: 100%;
     height: 30%;
-   
  }
  
  .card > .img-container {
@@ -34,7 +34,7 @@
     overflow: hidden;
     text-align: center;
     background:#6CADDC;
-  
+
   }
  
   img {
