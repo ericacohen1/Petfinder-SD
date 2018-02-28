@@ -46,11 +46,7 @@ npm manifest:
       "react-router": "^4.2.0",
       "react-router-dom": "^4.2.2"
   
-<<<<<<< HEAD
-      // "reactjs-localstorage": "0.0.6"
-=======
       "reactjs-localstorage": "0.0.6"
->>>>>>> 2c01d89bdfae65dd571faf31cb8a8d7683245799
   
     }
   }
