@@ -125,8 +125,9 @@ class App extends Component {
       // go to the homepage
       // this.props.history.push("Home");
       history.push('/Home');
+    }).then(res => {
+      this.getPets();
     }).catch(err => alert(err));
-
   };
 
   handleLogout = () => {
